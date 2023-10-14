@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "builders index page", type: :feature do
+RSpec.describe "instrument builders show page", type: :feature do
   before (:each) do 
     @fender = InstrumentBuilder.create!(name: "Fender", year_founded: 1946, in_business: true)
     @gibson = InstrumentBuilder.create!(name: "Gibson", year_founded: 1902, in_business: true)
