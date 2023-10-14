@@ -20,4 +20,12 @@ RSpec.describe "models index page", type: :feature do
     expect(page).to have_content(@vintage_tele.value)
     # (data from each column that is on the child table)
   end
+
+  it 'can be accessed from anywhere' do
+#     As a visitor
+# When I visit any page on the site
+    visit "/instrument_builders"
+# Then I see a link at the top of the page that takes me to the Child Index
+    expect(page).to have_link("/models")
+  end
 end
