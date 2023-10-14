@@ -33,4 +33,15 @@ RSpec.describe "instrument builders show page", type: :feature do
     expect(page).to have_content(@gibson.in_business)
     expect(page).to_not have_content(@martin.name)
   end
+
+
+#   As a visitor
+    it 'tells how many models each builder has' do
+      # When I visit a parent's show page
+      visit "/instrument_builders/#{@fender.id}"
+      # I see a count of the number of children associated with this parent
+      save_and_open_page
+      expect(instrument_builder.models.count).to (2)
+    
+    end
 end

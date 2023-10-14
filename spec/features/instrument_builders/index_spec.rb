@@ -48,7 +48,6 @@ RSpec.describe 'instrument_builders index page', type: :feature do
     # When I visit the parent index,
     visit "/instrument_builders"
     # I see that records are ordered by most recently created first
-    save_and_open_page
     expect(page).to have_content(@fender.created_at)
     expect(page).to have_content(@martin.created_at)
     expect(page).to have_content(@gibson.created_at)
