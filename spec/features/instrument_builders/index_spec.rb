@@ -43,4 +43,18 @@ RSpec.describe 'instrument_builders index page', type: :feature do
     # (data from each column that is on the child table)
     # end
     end
+  it 'shows builders by recently created' do
+    #     As a visitor
+    # When I visit the parent index,
+    visit "/instrument_builders"
+    # I see that records are ordered by most recently created first
+    save_and_open_page
+    expect(page).to have_content(@fender.created_at)
+    expect(page).to have_content(@martin.created_at)
+    expect(page).to have_content(@gibson.created_at)
+    # And next to each of the records I see when it was created
+    expect(@fender.name).to appear_before(@martin.name)
+    expect(@martin.name).to appear_before(@gibson.name)
+    expect(@gibson.name).to_not appear_before(@gibson.name)
   end
+end
