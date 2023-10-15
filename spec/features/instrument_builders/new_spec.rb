@@ -11,9 +11,19 @@ RSpec.describe 'Builder Creation' do
     click_link('New Builder')
     expect(current_path).to eq("/instrument_builders/new")
   end
+
+  it 'can create a new model' do
+    visit '/instrument_builders/new'
+    # When I fill out the form with a new parent's attributes:
+    # And I click the button "Create Parent" to submit the form
+    fill_in("Name", with: "Paul Reed Smith")
+    click_button("Create Model")
+    # Then a `POST` request is sent to the '/parents' route,
+    # a new parent record is created,
+    # and I am redirected to the Parent Index page where I see the new Parent displayed.
+    new_builder_id = InstrumentBuilder.last.id
+    expect(current_path).to eq("instrument_builders/#{new_builder_id}")
+    expect(page).to have_content("Paul Reed Smith")
+  
+  end
 end
-# When I fill out the form with a new parent's attributes:
-# And I click the button "Create Parent" to submit the form
-# Then a `POST` request is sent to the '/parents' route,
-# a new parent record is created,
-# and I am redirected to the Parent Index page where I see the new Parent displayed.
