@@ -1,6 +1,8 @@
   <%= link_to "Models Index", @models %>
   <%= link_to "Builder Index", builders_path %>
 
+<%= link_to "New Builder", "/instrument_builders/new" %>
+
 <p><h1>All Builders</h1></p>
 <% builders = @instrument_builders.order(created_at: :asc) %>
 
