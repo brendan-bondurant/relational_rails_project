@@ -56,4 +56,29 @@ RSpec.describe 'instrument_builders index page', type: :feature do
     expect(@martin.name).to appear_before(@gibson.name)
     expect(@gibson.name).to_not appear_before(@gibson.name)
   end
+  it 'can be accessed from anywhere' do
+#     As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Parent Index
+    visit "/instrument_builders"
+    expect(page).to have_link("Builder Index")
+    visit "/instrument_builders/#{@fender.id}"
+    expect(page).to have_link("Builder Index")
+    visit "/instrument_builders/#{@martin.id}/models"
+    expect(page).to have_link("Builder Index")
+    visit "/models/#{@player_tele.id}"
+    expect(page).to have_link("Builder Index")
+  end
+
+  it 'is at the top of the page' do
+    visit "/instrument_builders"
+    expect("Builder Index").to appear_before("All")
+    visit "/instrument_builders/#{@fender.id}"
+    expect("Builder Index").to appear_before("Founded in")
+    visit "/instrument_builders/#{@martin.id}/models"
+    expect("Builder Index").to appear_before("Name")
+    visit "/models/#{@player_tele.id}"
+    expect("Builder Index").to appear_before("Name")
+  
+  end
 end
