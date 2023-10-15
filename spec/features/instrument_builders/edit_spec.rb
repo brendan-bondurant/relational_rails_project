@@ -5,13 +5,13 @@ RSpec.describe 'the builder edit' do
     builder = InstrumentBuilder.create!(name: "Paul Reed Smith", year_founded: 1985, in_business: true)
     # When I visit a parent show page
     # Then I see a link to update the parent "Update Parent"
-    # When I click the link "Update Parent"
-    # Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
     visit '/instrument_builders'
 
-    click_button "Edit #{builder.name} "
+    click_button "Edit #{builder.name}"
+    # When I click the link "Update Parent"
+    # Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
 
-    expect(current_path).to eq("/instrument_builders/#{builder.id}")
+    expect(current_path).to eq("/instrument_builders/#{builder.id}/edit")
 
   end
 end

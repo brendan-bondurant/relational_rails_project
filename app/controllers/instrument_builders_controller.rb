@@ -17,6 +17,10 @@ class InstrumentBuildersController < ApplicationController
     redirect_to "/instrument_builders"
   end
 
+  def edit
+    
+  end
+
   #use later to clean up create method by using builder_params as argument)
   def builder_params
     params.permit(:name)
