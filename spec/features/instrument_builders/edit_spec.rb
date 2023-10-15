@@ -14,11 +14,26 @@ RSpec.describe 'the builder edit' do
     expect(current_path).to eq("/instrument_builders/#{builder.id}/edit")
 
   end
+  
+  it 'can edit the builder info' do
+    builder = InstrumentBuilder.create!(name: "Paul Reed Smith", year_founded: 1785, in_business: true)
+
+    visit "/instrument_builders"
+
+    expect(page).to have_content(1785)
+
+    click_button "Edit #{builder.name}"
+
+    
+    fill_in "year_founded", with: 1985
+    click button "Update info"
+
+    expect(current_path).to eq('/instrument_builders')
+    expect(page).to have_content(1985)
+    # When I fill out the form with updated information
+    # And I click the button to submit the form
+    # Then a `PATCH` request is sent to '/parents/:id',
+    # the parent's info is updated,
+    # and I am redirected to the Parent's Show page where I see the parent's updated info
+  end
 end
-
-
-# When I fill out the form with updated information
-# And I click the button to submit the form
-# Then a `PATCH` request is sent to '/parents/:id',
-# the parent's info is updated,
-# and I am redirected to the Parent's Show page where I see the parent's updated info
