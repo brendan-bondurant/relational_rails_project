@@ -79,6 +79,13 @@ RSpec.describe 'instrument_builders index page', type: :feature do
     expect("Builder Index").to appear_before("Name")
     visit "/models/#{@player_tele.id}"
     expect("Builder Index").to appear_before("Name")
+  end
+
+  it 'connects the show page the child-table page' do
+# When I visit a parent show page ('/parents/:id')
+  visit "/instrument_builders/#{@fender.id}"
+# Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+  expect(page).to have_link("Everything They Make")
   
   end
 end
