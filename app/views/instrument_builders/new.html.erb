@@ -1,0 +1,10 @@
+<%= form_with url:'/instrument_builders', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :year_founded %>
+  <%= form.text_field :year_founded %>
+  <%= form.label :in_business %>
+  <%= form.text_field :in_business %>
+
+  <%= form.submit "Create Model" %>
+<% end %>
