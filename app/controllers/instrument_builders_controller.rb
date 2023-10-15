@@ -18,7 +18,13 @@ class InstrumentBuildersController < ApplicationController
   end
 
   def edit
-    
+    @instrument_builder = InstrumentBuilder.find(params[:id])
+  end
+
+  def update
+    instrument_builder = InstrumentBuilder.find(params[:id])
+    instrument_builder.update(name: params[:name], year_founded: params[:year_founded], in_business: params[:in_business])
+    redirect_to "/instrument_builders"
   end
 
   #use later to clean up create method by using builder_params as argument)

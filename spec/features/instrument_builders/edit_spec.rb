@@ -16,20 +16,20 @@ RSpec.describe 'the builder edit' do
   end
   
   it 'can edit the builder info' do
-    builder = InstrumentBuilder.create!(name: "Paul Reed Smith", year_founded: 1785, in_business: true)
+    builder = InstrumentBuilder.create!(name: "Paul Reed Smit", year_founded: 1785, in_business: true)
 
     visit "/instrument_builders"
-
-    expect(page).to have_content(1785)
+# save_and_open_page
+    expect(page).to have_content("Paul Reed Smit")
 
     click_button "Edit #{builder.name}"
 
-    
-    fill_in "year_founded", with: 1985
-    click button "Update info"
-
+    fill_in("Name", with: "Paul Reed Smith")
+    fill_in("year_founded", with: 1985)
+    fill_in("in_business", with: true)
+    click_button "Update"
     expect(current_path).to eq('/instrument_builders')
-    expect(page).to have_content(1985)
+    expect(page).to have_content("Paul Reed Smith")
     # When I fill out the form with updated information
     # And I click the button to submit the form
     # Then a `PATCH` request is sent to '/parents/:id',
