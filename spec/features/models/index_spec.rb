@@ -26,15 +26,25 @@ RSpec.describe "models index page", type: :feature do
 #     As a visitor
 # When I visit any page on the site
     visit "/instrument_builders"
-    # save_and_open_page
     # Then I see a link at the top of the page that takes me to the Child Index
     expect(page).to have_link("Models Index")
     visit "/instrument_builders/#{@fender.id}"
-    save_and_open_page
     expect(page).to have_link("Models Index")
     visit "/instrument_builders/#{@martin.id}/models"
     expect(page).to have_link("Models Index")
     visit "/models/#{@player_tele.id}"
     expect(page).to have_link("Models Index")
+  end
+
+  it 'is at the top of the page' do
+    visit "/instrument_builders"
+    expect("Models Index").to appear_before("Builder")
+    visit "/instrument_builders/#{@fender.id}"
+    expect("Models Index").to appear_before("Builder")
+    visit "/instrument_builders/#{@martin.id}/models"
+    expect("Models Index").to appear_before("Name")
+    visit "/models/#{@player_tele.id}"
+    expect("Models Index").to appear_before("Name")
+  
   end
 end

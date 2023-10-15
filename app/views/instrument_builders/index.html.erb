@@ -4,6 +4,6 @@
 <% builders = @instrument_builders.order(created_at: :asc) %>
 
 <% builders.each do |builder| %>
-  <h2><%= builder.name %></h2>
+  <h2>Builder:<%= builder.name %></h2>
   <p>Created at: <%= builder.created_at %></p>
   <% end %>
