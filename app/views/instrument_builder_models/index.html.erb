@@ -1,10 +1,11 @@
+<%= link_to "Builder Index", builders_path %>
 <%= link_to "Models Index", models_path %>
 
 <h1>Instruments</h1>
 <% @models.each do |model|  %>
   <h2>Name:<%= model.name  %></h2>
   <p>Year: <%= model.year %></p>
-  <p>Is it vingtage?:<%= model.vintage %></p>
+  <p>Is it vintage?:<%= model.vintage %></p>
   <p>What is it worth?:<%= model.value %></p>
 <% end %>
 

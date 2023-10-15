@@ -72,9 +72,9 @@ RSpec.describe 'instrument_builders index page', type: :feature do
 
   it 'is at the top of the page' do
     visit "/instrument_builders"
-    expect("Builder Index").to appear_before("Builder")
+    expect("Builder Index").to appear_before("All")
     visit "/instrument_builders/#{@fender.id}"
-    expect("Builder Index").to appear_before("Builder")
+    expect("Builder Index").to appear_before("Founded in")
     visit "/instrument_builders/#{@martin.id}/models"
     expect("Builder Index").to appear_before("Name")
     visit "/models/#{@player_tele.id}"
