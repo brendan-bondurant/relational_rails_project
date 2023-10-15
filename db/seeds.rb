@@ -9,6 +9,7 @@
   @fender = InstrumentBuilder.create!(name: "Fender", year_founded: 1946, in_business: true)
   @gibson = InstrumentBuilder.create!(name: "Gibson", year_founded: 1902, in_business: true)
   @martin = InstrumentBuilder.create!(name: "Martin", year_founded: 1833, in_business: true)
+  @prs = InstrumentBuilder.create!(name: "Paul Reed Smith", year_founded: 1985, in_business: true)
   @player_tele = @fender.models.create!(name: "Player Telecaster", year: 2023, vintage: false, value: 849.99)
   @vintage_tele = @fender.models.create!(name: "Vintage Telecaster", year: 1952, vintage: true, value: 55000.00)
   @ooo15m = @martin.models.create!(name: "000-15M", year: 2023, vintage: false, value: 1699.00)

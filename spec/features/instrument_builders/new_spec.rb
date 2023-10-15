@@ -23,7 +23,6 @@ RSpec.describe 'Builder Creation' do
     # Then a `POST` request is sent to the '/parents' route,
     # a new parent record is created,
     # and I am redirected to the Parent Index page where I see the new Parent displayed.
-    new_builder_id = InstrumentBuilder.last.id
     expect(current_path).to eq("/instrument_builders")
     expect(page).to have_content("Paul Reed Smith")
   

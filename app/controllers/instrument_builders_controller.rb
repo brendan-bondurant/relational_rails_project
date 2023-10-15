@@ -16,4 +16,11 @@ class InstrumentBuildersController < ApplicationController
     builder = InstrumentBuilder.create(name: params[:name], year_founded: params[:year_founded], in_business: params[:in_business])
     redirect_to "/instrument_builders"
   end
+
+  #use later to clean up create method by using builder_params as argument)
+  def builder_params
+    params.permit(:name)
+    params.permit(:year_founded)
+    params.permit(:in_business)
+  end
 end
