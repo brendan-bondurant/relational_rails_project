@@ -8,6 +8,7 @@ RSpec.describe "models index page", type: :feature do
   @martin = InstrumentBuilder.create!(name: "Martin", year_founded: 1833, in_business: true)
   @ooo15m = @martin.models.create!(name: "000-15M", year: 2023, vintage: false, value: 1699.00)
   @hateful8 = @martin.models.create!(name: "Hateful 8", year: 1870, vintage: true, value: 40000.00)
+  
   end
   
   it 'displays each model with attributes' do
@@ -25,7 +26,15 @@ RSpec.describe "models index page", type: :feature do
 #     As a visitor
 # When I visit any page on the site
     visit "/instrument_builders"
-# Then I see a link at the top of the page that takes me to the Child Index
-    expect(page).to have_link("/models")
+    # save_and_open_page
+    # Then I see a link at the top of the page that takes me to the Child Index
+    expect(page).to have_link("Models Index")
+    visit "/instrument_builders/#{@fender.id}"
+    save_and_open_page
+    expect(page).to have_link("Models Index")
+    visit "/instrument_builders/#{@martin.id}/models"
+    expect(page).to have_link("Models Index")
+    visit "/models/#{@player_tele.id}"
+    expect(page).to have_link("Models Index")
   end
 end
