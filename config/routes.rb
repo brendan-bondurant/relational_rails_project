@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "instrument_builders/:id/edit", to: 'instrument_builders#edit'
 
   patch "/instrument_builders/:id", to: "instrument_builders#update"
+
+  get "/instrument_builders/:instrument_builder_id/new", to: "instrument_builder_models#new", as: "newgear"
   # Defines the root path route ("/")
   # root "articles#index"
 end

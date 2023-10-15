@@ -16,3 +16,4 @@
   @hateful8 = @martin.models.create!(name: "Hateful 8", year: 1870, vintage: true, value: 40000.00)
   @es339 = @gibson.models.create!(name: "ES-339", year: 2023, vintage: false, value: 2999.00)
   @vintage_lp = @gibson.models.create!(name: "Les Paul", year: 1959, vintage: true, value: 375000.00)
+  @dgt = @prs.models.create!(name: "DGT", year: 2023, vintage: false, value: 4600.00)
