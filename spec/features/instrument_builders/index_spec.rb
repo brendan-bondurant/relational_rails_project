@@ -88,4 +88,19 @@ RSpec.describe 'instrument_builders index page', type: :feature do
   expect(page).to have_link("Everything They Make")
   
   end
+
+  it 'alphabetizes list of models' do
+#     As a visitor
+# When I visit the Parent's children Index Page
+visit "/instrument_builders/#{@fender.id}/models"
+# Then I see a link to sort children in alphabetical order
+click_link "Alphabetize"
+
+expect(current_path).to eq("/instrument_builders/#{@fender.id}/alphabetize")
+
+expect(@player_tele.name).to appear_before(@vintage_tele.name)
+
+# When I click on the link
+# I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+  end
 end

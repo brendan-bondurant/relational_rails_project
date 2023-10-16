@@ -59,7 +59,7 @@ RSpec.describe "models index page", type: :feature do
 #     As a visitor
 # When I visit the child index
     visit "/models"
-save_and_open_page
+# save_and_open_page
 # Then I only see records where the boolean column is `true`
 expect(page).to have_content(@vintage_tele.name)
 expect(page).to have_content(@vintage_lp.name)

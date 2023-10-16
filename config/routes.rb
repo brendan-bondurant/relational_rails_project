@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'models/:id/edit', to: 'models#edit'
 
   patch '/models/:id', to: 'models#update'
+
+  get "/instrument_builders/:instrument_builder_id/alphabetize", to: "instrument_builder_models#alphabetize", as: "alphabetize"
   # Defines the root path route ("/")
   # root "articles#index"
 end
