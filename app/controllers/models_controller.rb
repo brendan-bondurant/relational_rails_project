@@ -10,4 +10,8 @@ class ModelsController < ApplicationController
     # @new = Model.create!(name: params[:name], year: params[:year], vintage: params[:vintage], value: params[:value])
   end
 
+  def edit
+    
+  end
+
 end

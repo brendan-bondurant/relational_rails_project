@@ -25,7 +25,6 @@ end
     fill_in('Value', with: 4660.00)
     click_button('Create Model')
     expect(current_path).to eq("/instrument_builders/#{@prs.id}/models")
-    save_and_open_page
     expect(page).to have_content("McCarty 594")
   end
 

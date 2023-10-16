@@ -1,9 +1,11 @@
 <%= link_to "Builder Index", builders_path %>
 <%= link_to "Models Index", models_path %>
 
+<p><%= button_to "Edit", "/models/#{@model.id}/edit", method: :get %></p>
 <h1>Models</h1>
 <p><%= @model.id  %></p>
 <p>Name: <%= @model.name %></p>
 <p>Year: <%= @model.year %></p>
 <p>Vintage: <%= @model.vintage %></p>
 <p>Value: <%= @model.value %></p>
+
