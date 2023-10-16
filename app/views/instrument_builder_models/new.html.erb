@@ -1,0 +1,13 @@
+<%= form_with url: "/instrument_builders/:#{@instrument_builder.id}/models", method: :post, local: true do |form| %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :year %>
+  <%= form.text_field :year%>
+  <%= form.label :vintage %>
+  <%= form.text_field :vintage %>
+  <%= form.label :value %>
+  <%= form.text_field :value %>
+
+  <%= form.submit "Create Model" %>
+<% end %>

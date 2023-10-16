@@ -27,9 +27,9 @@ class InstrumentBuildersController < ApplicationController
   end
 
   #use later to clean up create method by using builder_params as argument)
-  def builder_params
-    params.permit(:name)
-    params.permit(:year_founded)
-    params.permit(:in_business)
-  end
+  # def builder_params
+  #   params.permit(:name)
+  #   params.permit(:year_founded)
+  #   params.permit(:in_business)
+  # end
 end
