@@ -8,6 +8,11 @@ RSpec.describe "models index page", type: :feature do
   @martin = InstrumentBuilder.create!(name: "Martin", year_founded: 1833, in_business: true)
   @ooo15m = @martin.models.create!(name: "000-15M", year: 2023, vintage: false, value: 1699.00)
   @hateful8 = @martin.models.create!(name: "Hateful 8", year: 1870, vintage: true, value: 40000.00)
+  @prs = InstrumentBuilder.create!(name: "Paul Reed Smith", year_founded: 1985, in_business: true)
+  @gibson = InstrumentBuilder.create!(name: "Gibson", year_founded: 1902, in_business: true)
+  @es339 = @gibson.models.create!(name: "ES-339", year: 2023, vintage: false, value: 2999.00)
+  @vintage_lp = @gibson.models.create!(name: "Les Paul", year: 1959, vintage: true, value: 375000.00)
+  @dgt = @prs.models.create!(name: "DGT", year: 2023, vintage: false, value: 4600.00)
   
   end
   
@@ -15,9 +20,11 @@ RSpec.describe "models index page", type: :feature do
     # When I visit '/child_table_name'
     visit "/models"
     # Then I see each Child in the system including the Child's attributes
-    expect(page).to have_content(@player_tele.name)
+    expect(page).to_not have_content(@player_tele.name)
+    #the above test was changed from to have_content for user story 15
     expect(page).to have_content(@vintage_tele.year)
-    expect(page).to have_content(@ooo15m.vintage)
+    expect(page).to_not have_content(@ooo15m.vintage)
+    #the above test was changed from to have_content for user story 15
     expect(page).to have_content(@vintage_tele.value)
     # (data from each column that is on the child table)
   end
@@ -45,6 +52,19 @@ RSpec.describe "models index page", type: :feature do
     expect("Models Index").to appear_before("Name")
     visit "/models/#{@player_tele.id}"
     expect("Models Index").to appear_before("Name")
+  
+  end
+
+  it 'shows only records where the boolean column is true' do
+#     As a visitor
+# When I visit the child index
+    visit "/models"
+save_and_open_page
+# Then I only see records where the boolean column is `true`
+expect(page).to have_content(@vintage_tele.name)
+expect(page).to have_content(@vintage_lp.name)
+expect(page).to have_content(@hateful8.name)
+expect(page).to_not have_content(@dgt.name)
   
   end
 end
