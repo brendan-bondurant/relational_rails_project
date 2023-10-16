@@ -1,5 +1,7 @@
 <%= link_to "Builder Index", builders_path %>
 <%= link_to "Models Index", models_path %>
+<%= link_to "New Model", newgear_path %>
+
 
 <h1>Instruments</h1>
 <% @models.each do |model|  %>
@@ -8,4 +10,7 @@
   <p>Is it vintage?:<%= model.vintage %></p>
   <p>What is it worth?:<%= model.value %></p>
 <% end %>
+
+  <%= link_to "Alphabetize", alphabetize_path %>
+
 

@@ -3,9 +3,13 @@
 
 
 <% @models.each do |model| %>
+  <% if model.vintage == true  %>
   <h1>Model: <%= model.name %></h1>
   <p>Year: <%= model.year %></p>
   <p>Vintage Instrument?: <%= model.vintage %></p>
   <p>Value: <%= model.value %></p>
+  <% end %>
+
 
   <% end %>
+
