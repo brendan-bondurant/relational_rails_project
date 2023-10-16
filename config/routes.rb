@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   post "/instrument_builders/:instrument_builder_id/models", to: "instrument_builder_models#create"
 
   get 'models/:id/edit', to: 'models#edit'
+
+  patch '/models/:id', to: 'models#update'
   # Defines the root path route ("/")
   # root "articles#index"
 end
