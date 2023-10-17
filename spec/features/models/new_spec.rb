@@ -10,15 +10,6 @@ end
     visit "/instrument_builders/#{@prs.id}/models"
     click_link("New Model")
     expect(current_path).to eq("/instrument_builders/#{@prs.id}/models/new")
-    #     When I visit a Parent Children Index page
-# Then I see a link to add a new adoptable child for that parent "Create Child"
-# When I click the link
-# I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
-# When I fill in the form with the child's attributes:
-# And I click the button "Create Child"
-# Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
-# a new child object/row is created for that parent,
-# and I am redirected to the Parent Childs Index page where I can see the new child listed
     fill_in('Name', with: "McCarty 594")
     fill_in('Year', with: 2023)
     fill_in('Vintage', with: false)
@@ -27,5 +18,4 @@ end
     expect(current_path).to eq("/instrument_builders/#{@prs.id}/models")
     expect(page).to have_content("McCarty 594")
   end
-
 end

@@ -14,19 +14,14 @@ RSpec.describe "models show page", type: :feature do
   end
 
   it 'can see the attributes' do
-    # As a visitor
-    # When I visit '/parents/:id'
     visit "/models/#{@es339.id}"
-    # Then I see the parent with that id including the parent's attributes
     expect(page).to have_content(@es339.id)
     expect(page).to have_content(@es339.year)
     expect(page).to have_content(@es339.value)
     expect(page).to have_content(@es339.vintage)
     expect(page).to_not have_content(@hateful8.name)
     expect(page).to_not have_content(@vintage_lp.id)
-    
     visit "/models/#{@ooo15m.id}"
-    
     expect(page).to have_content(@ooo15m.id)
     expect(page).to have_content(@ooo15m.year)
     expect(page).to have_content(@ooo15m.name)
@@ -35,13 +30,8 @@ RSpec.describe "models show page", type: :feature do
   end
 
   it 'has an edit button next to each entry' do
-#     As a visitor
     visit "/models"
     click_link "Edit #{@vintage_lp.name}"
     expect(current_path).to eq("/models/#{@vintage_lp.id}/edit")
-# When I visit the `child_table_name` index page or a parent `child_table_name` index page
-# Next to every child, I see a link to edit that child's info
-# When I click the link
-# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 14
   end
 end
