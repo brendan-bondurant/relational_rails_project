@@ -37,7 +37,7 @@ RSpec.describe "models show page", type: :feature do
   it 'has an edit button next to each entry' do
 #     As a visitor
     visit "/models"
-    click_button "Edit #{@vintage_lp.name}"
+    click_link "Edit #{@vintage_lp.name}"
     expect(current_path).to eq("/models/#{@vintage_lp.id}/edit")
 # When I visit the `child_table_name` index page or a parent `child_table_name` index page
 # Next to every child, I see a link to edit that child's info
