@@ -117,7 +117,7 @@ expect(@player_tele.name).to appear_before(@vintage_tele.name)
 
   end
 
-  xit 'has a delete link next to each parent' do
+  it 'has a delete link next to each parent' do
 #     As a visitor
 # When I visit the parent index page
 visit "/instrument_builders"
