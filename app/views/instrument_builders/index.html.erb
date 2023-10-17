@@ -9,6 +9,7 @@
 <% builders.each do |builder| %>
   <p>Builder:<%= builder.name %> <%= button_to "Edit #{builder.name}", "/instrument_builders/#{builder.id}/edit", method: :get%></p>
   <p>Created at: <%= builder.created_at %></p>
+
   <% end %>
 
 

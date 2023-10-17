@@ -5,5 +5,6 @@
 <p>Founded in: <%= @instrument_builder.year_founded %></p>
 <p>Still in business? <%= @instrument_builder.in_business %></p>
 <p>How many models? <%= @instrument_builder.models.count %></p>
+<p><%= link_to "Delete", destroybuilder_path(@instrument_builder.id), method: :delete %></p>
 
 <p><%= link_to "Everything They Make", everything_path(@instrument_builder.id) %></p>
