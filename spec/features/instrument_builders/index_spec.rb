@@ -90,16 +90,21 @@ RSpec.describe 'instrument_builders index page', type: :feature do
   end
 
   it 'alphabetizes list of models' do
-#NEEDS TO BE REDONE, NOT REST-FUL     
+    z_tele = @fender.models.create!(name: "Z Telecaster", year: 2023, vintage: true, value: 849.99)
+    s_tele = @fender.models.create!(name: "S Telecaster", year: 1952, vintage: true, value: 55000.00)
+  
 #As a visitor
 # When I visit the Parent's children Index Page
 visit "/instrument_builders/#{@fender.id}/models"
+expect(z_tele.name).to appear_before(s_tele.name)
 # Then I see a link to sort children in alphabetical order
 click_link "Alphabetize"
 
-expect(current_path).to eq("/instrument_builders/#{@fender.id}/alphabetize")
+expect(current_path).to eq("/instrument_builders/#{@fender.id}/models")
 
 expect(@player_tele.name).to appear_before(@vintage_tele.name)
+expect(@player_tele.name).to appear_before(z_tele.name)
+expect(s_tele.name).to appear_before(z_tele.name)
 
 # When I click on the link
 # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order

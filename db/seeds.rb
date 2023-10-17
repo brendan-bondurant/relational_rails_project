@@ -17,3 +17,5 @@
   @es339 = @gibson.models.create!(name: "ES-339", year: 2023, vintage: false, value: 2999.00)
   @vintage_lp = @gibson.models.create!(name: "Les Paul", year: 1959, vintage: true, value: 375000.00)
   @dgt = @prs.models.create!(name: "DGT", year: 2023, vintage: false, value: 4600.00)
+  @z_tele = @fender.models.create!(name: "Z Telecaster", year: 2023, vintage: true, value: 849.99)
+  @s_tele = @fender.models.create!(name: "S Telecaster", year: 1952, vintage: true, value: 55000.00)

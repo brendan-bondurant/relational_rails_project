@@ -78,7 +78,6 @@ expect(page).to_not have_content(@dgt.name)
   end
   it 'allows to delete a single model on builder_model index' do
     visit "/instrument_builders/#{@martin.id}/models"
-    save_and_open_page
     expect(page).to have_content("Hateful 8")
     click_link "Delete Hateful 8"
     visit "/instrument_builders/#{@martin.id}"
