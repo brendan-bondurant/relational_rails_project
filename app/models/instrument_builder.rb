@@ -8,4 +8,8 @@ class InstrumentBuilder < ApplicationRecord
     # require 'pry'; binding.pry
     self.models.order(name: :asc)
   end
+
+  def value(worth)
+    self.models.where("value > ?", worth)
+  end
 end

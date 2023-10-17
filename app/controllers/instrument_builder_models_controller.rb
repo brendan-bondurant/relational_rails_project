@@ -3,9 +3,12 @@ class InstrumentBuilderModelsController < ApplicationController
 
     @instrument_builder = InstrumentBuilder.find(params[:instrument_builder_id])
     @models = @instrument_builder.models
+    # require 'pry'; binding.pry
       if (params[:order] == "name")
-        # require 'pry'; binding.pry
         @models = @instrument_builder.sort
+      elsif params[:value]!= nil
+          worth = params[:value].to_i
+        @models = @instrument_builder.value(worth)
       end
     # require 'pry'; binding.pry
   end

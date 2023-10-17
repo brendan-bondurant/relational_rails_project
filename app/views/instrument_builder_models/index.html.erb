@@ -12,6 +12,14 @@
   <p>What is it worth?:<%= model.value %></p>
 <% end %>
 
+<%= form_tag("/instrument_builders/#{@instrument_builder.id}/models", method: :get) do %>
+  <%= label_tag("value") %>
+  <%= text_field_tag(:value, params[:value]) %>
+  <%= submit_tag("Only return records worth more than this") %>
+<% end %>
+
+
+
   <%= link_to "Alphabetize", :order => "name" %>
 
 
