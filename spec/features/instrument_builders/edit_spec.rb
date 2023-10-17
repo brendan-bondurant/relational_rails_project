@@ -7,7 +7,7 @@ RSpec.describe 'the builder edit' do
     # Then I see a link to update the parent "Update Parent"
     visit "/instrument_builders/#{builder.id}"
 
-    click_button "Edit #{builder.name}"
+    click_link "Edit #{builder.name}"
     # When I click the link "Update Parent"
     # Then I am taken to '/parents/:id/edit' where I  see a form to edit the parent's attributes:
 
@@ -22,7 +22,7 @@ RSpec.describe 'the builder edit' do
 # save_and_open_page
     expect(page).to have_content("Paul Reed Smit")
 
-    click_button "Edit #{builder.name}"
+    click_link "Edit #{builder.name}"
 
     fill_in("Name", with: "Paul Reed Smith")
     fill_in("year_founded", with: 1985)

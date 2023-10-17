@@ -8,7 +8,7 @@ RSpec.describe 'model edit' do
   it 'links to the edit page' do
     dgt = @prs.models.create!(name: "DGT", year: 2023, vintage: false, value: 4600.00)
     visit "/models/#{dgt.id}"
-    click_button "Edit"
+    click_link "Edit"
 
     expect(current_path).to eq("/models/#{dgt.id}/edit")
   end
@@ -17,7 +17,7 @@ RSpec.describe 'model edit' do
     dgt = @prs.models.create!(name: "DOG", year: 2023, vintage: false, value: 4600.00)
     visit "/models/#{dgt.id}"
     expect(page).to have_content("DOG")
-    click_button "Edit"
+    click_link "Edit"
     
     visit "/models/#{dgt.id}/edit"
     fill_in "Name", with: "DGT"
