@@ -7,7 +7,7 @@
 <% builders = @instrument_builders.order(created_at: :asc) %>
 
 <% builders.each do |builder| %>
-  <p>Builder:<%= builder.name %> <%= button_to "Edit #{builder.name}", "/instrument_builders/#{builder.id}/edit", method: :get%> 
+  <p>Builder:<%= builder.name %> <%= link_to "Edit #{builder.name}", "/instrument_builders/#{builder.id}/edit", method: :get%> 
   <%= link_to "Delete #{builder.name}", "/instrument_builders/#{builder.id}", method: :delete %>
   
 </p>

@@ -115,7 +115,7 @@ expect(s_tele.name).to appear_before(z_tele.name)
     # When I visit the parent index page
     # Next to every parent, I see a link to edit that parent's info
     visit "/instrument_builders"
-    click_button "Edit #{@fender.name}"
+    click_link "Edit #{@fender.name}"
     # When I click the link
     # I should be taken to that parent's edit page where I can update its information just like in
     expect(current_path).to eq("/instrument_builders/#{@fender.id}/edit")
