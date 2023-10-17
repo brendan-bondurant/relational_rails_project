@@ -14,19 +14,14 @@ RSpec.describe "instrument builders show page", type: :feature do
   end
 
   it 'can see the attributes' do
-    # As a visitor
-    # When I visit '/parents/:id'
     visit "/instrument_builders/#{@fender.id}"
-    # Then I see the parent with that id including the parent's attributes
     expect(page).to have_content(@fender.id)
     expect(page).to have_content(@fender.year_founded)
     expect(page).to have_content(@fender.name)
     expect(page).to have_content(@fender.in_business)
     expect(page).to_not have_content(@martin.name)
     expect(page).to_not have_content(@gibson.id)
-    
     visit "/instrument_builders/#{@gibson.id}"
-    
     expect(page).to have_content(@gibson.id)
     expect(page).to have_content(@gibson.year_founded)
     expect(page).to have_content(@gibson.name)
@@ -34,15 +29,10 @@ RSpec.describe "instrument builders show page", type: :feature do
     expect(page).to_not have_content(@martin.name)
   end
 
-
-#   As a visitor
-    it 'tells how many models each builder has' do
-      # When I visit a parent's show page
-      visit "/instrument_builders/#{@fender.id}"
-      # I see a count of the number of children associated with this parent
-      expect(page).to have_content("How many models? 2")
-      visit "/instrument_builders/#{@gibson.id}"
-      expect(page).to have_content("How many models? 2")
-    
-    end
+  it 'tells how many models each builder has' do
+    visit "/instrument_builders/#{@fender.id}"
+    expect(page).to have_content("How many models? 2")
+    visit "/instrument_builders/#{@gibson.id}"
+    expect(page).to have_content("How many models? 2")
+  end
 end

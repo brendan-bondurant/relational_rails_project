@@ -4,7 +4,6 @@ RSpec.describe 'destroy a builder' do
   it 'can delete the builder from show' do
     taylor = InstrumentBuilder.create!(name: "Taylor", year_founded: 1974, in_business: true)
     visit "/instrument_builders/#{taylor.id}"
-    # save_and_open_page
     click_link 'Delete'
     expect(current_path).to eq('/instrument_builders')
     expect(page).to_not have_content("Taylor")
