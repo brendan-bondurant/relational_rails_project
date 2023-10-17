@@ -132,4 +132,23 @@ click_link "Delete #{@fender.name}"
 # I am returned to the Parent Index Page where I no longer see that parent
   
   end
+
+  it 'allows for seeing only models above a specific value' do
+    # As a visitor
+    # When I visit the Parent's children Index Page
+    visit "/instrument_builders/#{@fender.id}/models"
+    expect(page).to have_content(@player_tele.name)
+    expect(page).to have_content(@vintage_tele.name)
+    # save_and_open_page
+    # I see a form that allows me to input a number value
+    fill_in("value", with: 1000)
+    # When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+    click_button "Only return records worth more than this"
+    expect(current_path).to eq("/instrument_builders/#{@fender.id}/models")
+    expect(page).to_not have_content(@player_tele.name)
+    # Then I am brought back to the current index page with only the records that meet that threshold shown.
+
+
+  
+  end
 end
