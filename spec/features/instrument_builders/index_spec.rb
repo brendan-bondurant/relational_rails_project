@@ -90,7 +90,8 @@ RSpec.describe 'instrument_builders index page', type: :feature do
   end
 
   it 'alphabetizes list of models' do
-#     As a visitor
+#NEEDS TO BE REDONE, NOT REST-FUL     
+#As a visitor
 # When I visit the Parent's children Index Page
 visit "/instrument_builders/#{@fender.id}/models"
 # Then I see a link to sort children in alphabetical order
@@ -102,5 +103,18 @@ expect(@player_tele.name).to appear_before(@vintage_tele.name)
 
 # When I click on the link
 # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+  end
+
+  it 'has an edit link next to each parent' do
+    #As a visitor
+    # When I visit the parent index page
+    # Next to every parent, I see a link to edit that parent's info
+    visit "/instrument_builders"
+    save_and_open_page
+    click_button "Edit #{@fender.name}"
+    # When I click the link
+    # I should be taken to that parent's edit page where I can update its information just like in
+    expect(current_path).to eq("/instrument_builders/#{@fender.id}/edit")
+
   end
 end
