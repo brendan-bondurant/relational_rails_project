@@ -1,12 +1,11 @@
 <%= form_with url: "/models/#{@model.id}", method: :patch, local: true do |form|  %>
-<%= form.label :name %>
-<%= form.text_field :name %>
-<%= form.label :year %>
-<%= form.text_field :year %>
-<%= form.label :vintage %>
-<%= form.text_field :vintage %>
-<%= form.label :value %>
-<%= form.text_field :value %>
-
-<%= form.submit 'Update' %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :year %>
+  <%= form.text_field :year %>
+  <%= form.label :vintage %>
+  <%= form.text_field :vintage %>
+  <%= form.label :value %>
+  <%= form.text_field :value %>
+  <%= form.submit 'Update' %>
 <% end %>
