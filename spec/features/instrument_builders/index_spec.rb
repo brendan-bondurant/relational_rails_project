@@ -12,12 +12,8 @@ RSpec.describe 'instrument_builders index page', type: :feature do
     @es339 = @gibson.models.create!(name: "ES-339", year: 2023, vintage: false, value: 2999.00)
     @vintage_lp = @gibson.models.create!(name: "Les Paul", year: 1959, vintage: true, value: 375000.00)
   end
-  #   For each parent table
-# As a visitor
-# When I visit '/parents'
-# Then I see the name of each parent record in the system
+  
   it 'can see the name of each builder' do
-    # require 'pry'; binding.pry
     visit "/instrument_builders"
     expect(page).to have_content(@fender.name)
     expect(page).to have_content(@martin.name)
@@ -47,7 +43,7 @@ RSpec.describe 'instrument_builders index page', type: :feature do
     expect(@martin.name).to appear_before(@gibson.name)
     expect(@gibson.name).to_not appear_before(@gibson.name)
   end
-  
+
   it 'can be accessed from anywhere' do
     visit "/instrument_builders"
     expect(page).to have_link("Builder Index")
