@@ -6,6 +6,7 @@
 <h1>Instruments</h1>
 <% @models.each do |model|  %>
   <h2>Name:<%= model.name  %></h2>
+    <p><%= link_to "Delete #{model.name}", "/models/#{model.id}", method: :delete %></p>
   <p>Year: <%= model.year %></p>
   <p>Is it vintage?:<%= model.vintage %></p>
   <p>What is it worth?:<%= model.value %></p>
