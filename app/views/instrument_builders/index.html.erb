@@ -1,4 +1,4 @@
-  <%= link_to "Models Index", @models %>
+  <%= link_to "Models Index", models_path %>
   <%= link_to "Builder Index", builders_path %>
 
 <%= link_to "New Builder", "/instrument_builders/new" %>
@@ -7,8 +7,12 @@
 <% builders = @instrument_builders.order(created_at: :asc) %>
 
 <% builders.each do |builder| %>
-  <h2>Builder:<%= builder.name %> <%= button_to "Edit #{builder.name}", "/instrument_builders/#{builder.id}/edit", method: :get%></h2>
+  <p>Builder:<%= builder.name %> <%= button_to "Edit #{builder.name}", "/instrument_builders/#{builder.id}/edit", method: :get%> 
+  <%= link_to "Delete #{builder.name}", "/instrument_builders/#{builder.id}", method: :delete %>
+  
+</p>
   <p>Created at: <%= builder.created_at %></p>
+
   <% end %>
 
 

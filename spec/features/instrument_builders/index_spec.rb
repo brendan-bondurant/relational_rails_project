@@ -90,17 +90,46 @@ RSpec.describe 'instrument_builders index page', type: :feature do
   end
 
   it 'alphabetizes list of models' do
-#     As a visitor
+    z_tele = @fender.models.create!(name: "Z Telecaster", year: 2023, vintage: true, value: 849.99)
+    s_tele = @fender.models.create!(name: "S Telecaster", year: 1952, vintage: true, value: 55000.00)
+  
+#As a visitor
 # When I visit the Parent's children Index Page
 visit "/instrument_builders/#{@fender.id}/models"
+expect(z_tele.name).to appear_before(s_tele.name)
 # Then I see a link to sort children in alphabetical order
 click_link "Alphabetize"
 
-expect(current_path).to eq("/instrument_builders/#{@fender.id}/alphabetize")
+expect(current_path).to eq("/instrument_builders/#{@fender.id}/models")
 
 expect(@player_tele.name).to appear_before(@vintage_tele.name)
+expect(@player_tele.name).to appear_before(z_tele.name)
+expect(s_tele.name).to appear_before(z_tele.name)
 
 # When I click on the link
 # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+  end
+
+  it 'has an edit link next to each parent' do
+    #As a visitor
+    # When I visit the parent index page
+    # Next to every parent, I see a link to edit that parent's info
+    visit "/instrument_builders"
+    click_button "Edit #{@fender.name}"
+    # When I click the link
+    # I should be taken to that parent's edit page where I can update its information just like in
+    expect(current_path).to eq("/instrument_builders/#{@fender.id}/edit")
+
+  end
+
+  it 'has a delete link next to each parent' do
+#     As a visitor
+# When I visit the parent index page
+visit "/instrument_builders"
+click_link "Delete #{@fender.name}"
+# Next to every parent, I see a link to delete that parent
+# When I click the link
+# I am returned to the Parent Index Page where I no longer see that parent
+  
   end
 end

@@ -26,6 +26,12 @@ class InstrumentBuildersController < ApplicationController
     redirect_to "/instrument_builders"
   end
 
+  def destroy
+    instrument_builder = InstrumentBuilder.find(params[:id])
+    instrument_builder.destroy
+    redirect_to "/instrument_builders"
+  end
+
   #use later to clean up create method by using builder_params as argument)
   # def builder_params
   #   params.permit(:name)

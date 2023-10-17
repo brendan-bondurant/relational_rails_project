@@ -4,7 +4,9 @@
 
 <% @models.each do |model| %>
   <% if model.vintage == true  %>
-  <h1>Model: <%= model.name %></h1>
+  <h1>Model: <%= model.name %><%= button_to "Edit #{model.name}", "/models/#{model.id}/edit", method: :get%></p></h1>
+  <p><%= link_to "Delete #{model.name}", "/models/#{model.id}", method: :delete %></p>
+
   <p>Year: <%= model.year %></p>
   <p>Vintage Instrument?: <%= model.vintage %></p>
   <p>Value: <%= model.value %></p>

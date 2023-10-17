@@ -21,4 +21,11 @@ class ModelsController < ApplicationController
     redirect_to "/models/#{model.id}"
   end
 
+  def destroy
+    # require 'pry'; binding.pry
+    model = Model.find(params[:id])
+    model.destroy
+    redirect_to "/models"
+  end
+
 end

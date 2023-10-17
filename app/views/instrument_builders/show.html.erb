@@ -2,8 +2,10 @@
 <%= link_to "Builder Index", builders_path %>
 <p><%= @instrument_builder.id %></p>
 <h1>Builder: <%= @instrument_builder.name %></h1>
+<%= button_to "Edit #{@instrument_builder.name}", "/instrument_builders/#{@instrument_builder.id}/edit", method: :get%> 
 <p>Founded in: <%= @instrument_builder.year_founded %></p>
 <p>Still in business? <%= @instrument_builder.in_business %></p>
 <p>How many models? <%= @instrument_builder.models.count %></p>
+<p><%= link_to "Delete", destroybuilder_path(@instrument_builder.id), method: :delete %></p>
 
 <p><%= link_to "Everything They Make", everything_path(@instrument_builder.id) %></p>

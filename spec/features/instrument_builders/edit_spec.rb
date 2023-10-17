@@ -5,7 +5,7 @@ RSpec.describe 'the builder edit' do
     builder = InstrumentBuilder.create!(name: "Paul Reed Smith", year_founded: 1985, in_business: true)
     # When I visit a parent show page
     # Then I see a link to update the parent "Update Parent"
-    visit '/instrument_builders'
+    visit "/instrument_builders/#{builder.id}"
 
     click_button "Edit #{builder.name}"
     # When I click the link "Update Parent"
@@ -18,7 +18,7 @@ RSpec.describe 'the builder edit' do
   it 'can edit the builder info' do
     builder = InstrumentBuilder.create!(name: "Paul Reed Smit", year_founded: 1785, in_business: true)
 
-    visit "/instrument_builders"
+    visit "/instrument_builders/#{builder.id}"
 # save_and_open_page
     expect(page).to have_content("Paul Reed Smit")
 

@@ -3,6 +3,11 @@ class InstrumentBuilderModelsController < ApplicationController
 
     @instrument_builder = InstrumentBuilder.find(params[:instrument_builder_id])
     @models = @instrument_builder.models
+      if (params[:order] == "name")
+        # require 'pry'; binding.pry
+        @models = @instrument_builder.sort
+      end
+    # require 'pry'; binding.pry
   end
 
   def new
@@ -16,9 +21,9 @@ class InstrumentBuilderModelsController < ApplicationController
     redirect_to "/instrument_builders/#{@instrument_builder.id}/models"
   end
 
-  def alphabetize
-    @instrument_builder = InstrumentBuilder.find_by(params[:id])
+  # def alphabetize
+    # @instrument_builder = InstrumentBuilder.find_by(params[:id])
     # require 'pry'; binding.pry
-    @models = @instrument_builder.models
-  end
+  #   @models = @instrument_builder.models
+  # end
 end

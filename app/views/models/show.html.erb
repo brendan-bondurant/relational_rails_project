@@ -8,4 +8,5 @@
 <p>Year: <%= @model.year %></p>
 <p>Vintage: <%= @model.vintage %></p>
 <p>Value: <%= @model.value %></p>
+<p><%= link_to "Delete", "#{@model.id}", method: :delete %></p>
 
