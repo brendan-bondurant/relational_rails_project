@@ -5,7 +5,6 @@ class InstrumentBuilder < ApplicationRecord
   validates_presence_of :year_founded
   
   def sort
-    # require 'pry'; binding.pry
     self.models.order(name: :asc)
   end
 

@@ -12,12 +12,8 @@ RSpec.describe 'instrument_builders index page', type: :feature do
     @es339 = @gibson.models.create!(name: "ES-339", year: 2023, vintage: false, value: 2999.00)
     @vintage_lp = @gibson.models.create!(name: "Les Paul", year: 1959, vintage: true, value: 375000.00)
   end
-  #   For each parent table
-# As a visitor
-# When I visit '/parents'
-# Then I see the name of each parent record in the system
+  
   it 'can see the name of each builder' do
-    # require 'pry'; binding.pry
     visit "/instrument_builders"
     expect(page).to have_content(@fender.name)
     expect(page).to have_content(@martin.name)
@@ -25,11 +21,7 @@ RSpec.describe 'instrument_builders index page', type: :feature do
   end
   
   it 'shows all the models with a specific builder' do
-
-    # When I visit '/parents/:parent_id/child_table_name'
-    # require 'pry'; binding.pry
     visit "/instrument_builders/#{@fender.id}/models"
-    # Then I see each Child that is associated with that Parent with each Child's attributes
     expect(page).to have_content(@vintage_tele.name)
     expect(page).to have_content(@player_tele.name)
     expect(page).to have_content(@vintage_tele.year)
@@ -40,26 +32,19 @@ RSpec.describe 'instrument_builders index page', type: :feature do
     expect(page).to have_content(@player_tele.value)
     expect(page).to_not have_content(@ooo15m.value)
     expect(page).to_not have_content(@vintage_lp.name)
-    # (data from each column that is on the child table)
-    # end
     end
+  
   it 'shows builders by recently created' do
-    #     As a visitor
-    # When I visit the parent index,
     visit "/instrument_builders"
-    # I see that records are ordered by most recently created first
     expect(page).to have_content(@fender.created_at)
     expect(page).to have_content(@martin.created_at)
     expect(page).to have_content(@gibson.created_at)
-    # And next to each of the records I see when it was created
     expect(@fender.name).to appear_before(@martin.name)
     expect(@martin.name).to appear_before(@gibson.name)
     expect(@gibson.name).to_not appear_before(@gibson.name)
   end
+
   it 'can be accessed from anywhere' do
-#     As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Parent Index
     visit "/instrument_builders"
     expect(page).to have_link("Builder Index")
     visit "/instrument_builders/#{@fender.id}"
@@ -82,73 +67,40 @@ RSpec.describe 'instrument_builders index page', type: :feature do
   end
 
   it 'connects the show page the child-table page' do
-# When I visit a parent show page ('/parents/:id')
-  visit "/instrument_builders/#{@fender.id}"
-# Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
-  expect(page).to have_link("Everything They Make")
-  
+    visit "/instrument_builders/#{@fender.id}"
+    expect(page).to have_link("Everything They Make")
   end
 
   it 'alphabetizes list of models' do
     z_tele = @fender.models.create!(name: "Z Telecaster", year: 2023, vintage: true, value: 849.99)
     s_tele = @fender.models.create!(name: "S Telecaster", year: 1952, vintage: true, value: 55000.00)
-  
-#As a visitor
-# When I visit the Parent's children Index Page
-visit "/instrument_builders/#{@fender.id}/models"
-expect(z_tele.name).to appear_before(s_tele.name)
-# Then I see a link to sort children in alphabetical order
-click_link "Alphabetize"
-
-expect(current_path).to eq("/instrument_builders/#{@fender.id}/models")
-
-expect(@player_tele.name).to appear_before(@vintage_tele.name)
-expect(@player_tele.name).to appear_before(z_tele.name)
-expect(s_tele.name).to appear_before(z_tele.name)
-
-# When I click on the link
-# I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+    visit "/instrument_builders/#{@fender.id}/models"
+    expect(z_tele.name).to appear_before(s_tele.name)
+    click_link "Alphabetize"
+    expect(current_path).to eq("/instrument_builders/#{@fender.id}/models")
+    expect(@player_tele.name).to appear_before(@vintage_tele.name)
+    expect(@player_tele.name).to appear_before(z_tele.name)
+    expect(s_tele.name).to appear_before(z_tele.name)
   end
 
   it 'has an edit link next to each parent' do
-    #As a visitor
-    # When I visit the parent index page
-    # Next to every parent, I see a link to edit that parent's info
     visit "/instrument_builders"
     click_link "Edit #{@fender.name}"
-    # When I click the link
-    # I should be taken to that parent's edit page where I can update its information just like in
     expect(current_path).to eq("/instrument_builders/#{@fender.id}/edit")
-
   end
 
   it 'has a delete link next to each parent' do
-#     As a visitor
-# When I visit the parent index page
-visit "/instrument_builders"
-click_link "Delete #{@fender.name}"
-# Next to every parent, I see a link to delete that parent
-# When I click the link
-# I am returned to the Parent Index Page where I no longer see that parent
-  
+    visit "/instrument_builders"
+    click_link "Delete #{@fender.name}"
   end
 
   it 'allows for seeing only models above a specific value' do
-    # As a visitor
-    # When I visit the Parent's children Index Page
     visit "/instrument_builders/#{@fender.id}/models"
     expect(page).to have_content(@player_tele.name)
     expect(page).to have_content(@vintage_tele.name)
-    # save_and_open_page
-    # I see a form that allows me to input a number value
     fill_in("value", with: 1000)
-    # When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
     click_button "Only return records worth more than this"
     expect(current_path).to eq("/instrument_builders/#{@fender.id}/models")
     expect(page).to_not have_content(@player_tele.name)
-    # Then I am brought back to the current index page with only the records that meet that threshold shown.
-
-
-  
   end
 end

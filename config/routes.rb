@@ -28,11 +28,6 @@ Rails.application.routes.draw do
 
   patch '/models/:id', to: 'models#update'
 
-  # get "/instrument_builders/:instrument_builder_id/alphabetize", to: "instrument_builder_models#alphabetize", as: "alphabetize"
-
-  # get "/instrument_builder_models/:instrument_builder_id/models", to: "instrument_builder_models#value"
-
-
   delete "/instrument_builders/:id", to: 'instrument_builders#destroy', as: "destroybuilder"
   
   delete "/models/:id", to: 'models#destroy', as: "destroymodel"

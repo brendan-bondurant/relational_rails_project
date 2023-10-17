@@ -8,10 +8,8 @@
 
 <% builders.each do |builder| %>
   <p>Builder:<%= builder.name %> <%= link_to "Edit #{builder.name}", "/instrument_builders/#{builder.id}/edit", method: :get%> 
-  <%= link_to "Delete #{builder.name}", "/instrument_builders/#{builder.id}", method: :delete %>
+  <%= link_to "Delete #{builder.name}", "/instrument_builders/#{builder.id}", method: :delete %>Created at: <%= builder.created_at %></p>
   
-</p>
-  <p>Created at: <%= builder.created_at %></p>
 
   <% end %>
 
