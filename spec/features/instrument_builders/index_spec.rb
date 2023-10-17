@@ -110,7 +110,6 @@ expect(@player_tele.name).to appear_before(@vintage_tele.name)
     # When I visit the parent index page
     # Next to every parent, I see a link to edit that parent's info
     visit "/instrument_builders"
-    save_and_open_page
     click_button "Edit #{@fender.name}"
     # When I click the link
     # I should be taken to that parent's edit page where I can update its information just like in
