@@ -116,4 +116,15 @@ expect(@player_tele.name).to appear_before(@vintage_tele.name)
     expect(current_path).to eq("/instrument_builders/#{@fender.id}/edit")
 
   end
+
+  xit 'has a delete link next to each parent' do
+#     As a visitor
+# When I visit the parent index page
+visit "/instrument_builders"
+click_link "Delete #{@fender.name}"
+# Next to every parent, I see a link to delete that parent
+# When I click the link
+# I am returned to the Parent Index Page where I no longer see that parent
+  
+  end
 end
